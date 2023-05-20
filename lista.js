@@ -1,7 +1,7 @@
-const imoveis = document.querySelector('.imoveis');
+const proprietario = document.getElementById('proprietario');
+const quartos = document.getElementById('quartos');
+const banheiros = document.getElementById('banheiros');
+const garagem = document.getElementById('garagem');
 
-onload = () => {
-    let imoveisLocalStorage= localStorage.getItem('imovel');
-    const imoveisObj = JSON.parse(imoveisLocalStorage)
-    console.log(imoveisObj);
-}
+const imovel = localStorage.getItem('imovel');
+console.log(imovel);
