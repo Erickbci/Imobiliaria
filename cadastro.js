@@ -13,4 +13,5 @@ botao.addEventListener('click', () => {
     alert('Imóvel Cadastrado com sucesso');
     console.log(imoveis);
 
+    localStorage.setItem('imovel', JSON.stringify(imovel))
 })
