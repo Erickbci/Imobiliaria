@@ -1,17 +1,52 @@
 const botao = document.getElementById('cadastrar')
-  
+
 botao.addEventListener('click', () => {
-    const imoveis = [];
+    const properties = [];
 
-    const imovel = {};
-    imovel.proprietario = document.getElementById('nomeDoProprietario').value;
-    imovel.quartos = document.getElementById('quantidadeDeQuartos').value;
-    imovel.banheiros = document.getElementById('quantidadeDeBanheiros').value;
-    imovel.garagem = document.getElementById('possuiGaragem').value;
+    const property = {};
+    property.owner = document.getElementById('nomeDoProprietario').value;
+    property.bedrooms = document.getElementById('quantidadeDeQuartos').value;
+    property.bathrooms = document.getElementById('quantidadeDeBanheiros').value;
+    property.garage = document.getElementById('possuiGaragem').value;
 
-    imoveis.push(imovel)
+    properties.push(property)
     alert('Imóvel Cadastrado com sucesso');
-    console.log(imoveis);
 
-    localStorage.setItem('imovel', JSON.stringify(imovel))
+    localStorage.setItem('properties', JSON.stringify(properties))
 })
+const arrayStringProperties = localStorage.getItem('properties');
+const arrayProperties = JSON.parse(arrayStringProperties)
+
+findProperties();
+
+function findProperties() {
+    setTimeout(() => { 
+    addPropertiesToScreen(arrayProperties)
+    }, 1000)
+}
+
+function addPropertiesToScreen(arrayProperties) {
+    const listProperties = document.getElementById('list-properties')
+    arrayProperties.forEach(property => {
+        
+        const li = document.createElement('li');
+
+        const owner = document.createElement('p');
+        owner.innerHTML = property.owner
+        li.appendChild(owner);
+
+        const bedrooms = document.createElement('p');
+        bedrooms.innerHTML = property.bedrooms
+        li.appendChild(bedrooms);
+
+        const bathrooms = document.createElement('p');
+        bathrooms.innerHTML = property.bathrooms
+        li.appendChild(bathrooms);
+
+        const garage = document.createElement('p');
+        garage.innerHTML = property.garage
+        li.appendChild(garage);
+
+        listProperties.appendChild(li);
+    })
+}
