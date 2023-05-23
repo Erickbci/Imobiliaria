@@ -1,6 +1,6 @@
 const botao = document.getElementById('cadastrar')
 
-botao.addEventListener('click', () => {
+function cadastrar(){
     const properties = [];
 
     const property = {};
@@ -13,7 +13,8 @@ botao.addEventListener('click', () => {
     alert('Imóvel Cadastrado com sucesso');
 
     localStorage.setItem('properties', JSON.stringify(properties))
-})
+}
+
 const arrayStringProperties = localStorage.getItem('properties');
 const arrayProperties = JSON.parse(arrayStringProperties)
 
